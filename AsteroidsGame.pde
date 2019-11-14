@@ -21,13 +21,23 @@ public void draw()
 }
 public void keyPressed(){
 	if(key == 'a'){
-		bob.myPointDirection -= 5;
+		bob.turn(-5);
 	}
 	if(key == 'd'){
-		bob.myPointDirection +=5;
+		bob.turn(5);
 	}
-	/*if(key == 'w'){
-		bob.
-	}*/
+	if(key == 'w'){
+		bob.accelerate(.3);
+	}
+	if(key == 's'){
+		bob.accelerate(-.3);
+	}
+	if(key == 'f'){
+		bob.turn((int)(Math.random()*360));
+		bob.setCenterX((int)(Math.random()*600)+1);
+		bob.setCenterY((int)(Math.random()*600)+1);
+		bob.setDirectionX((int)0);
+		bob.setDirectionY((int)0);
+	}
 }
 
