@@ -1,20 +1,28 @@
 Spaceship bob;
 Star[] a;
+Asteroid[] s;
 public void setup() 
 {
-  size(600,600);
+  size(800,800);
   bob = new Spaceship();
-  a = new Star[250];
+  a = new Star[500];
+  s = new Asteroid[30];
   for(int i = 0; i < a.length; i++){
   	a[i] = new Star();
+  }
+  for(int j = 0; j < s.length; j++){
+  	s[j] = new Asteroid();
   }
 }
 public void draw() 
 {
-  background(0);
-  for(int i = 0; i < a.length; i++){
-	a[i].show();
-
+  	background(0);
+  	for(int i = 0; i < a.length; i++){
+		a[i].show();
+}
+	for(int j = 0; j < s.length; j++){
+		s[j].show();
+		s[j].move();
 	}
 	bob.show();
 	bob.move();
