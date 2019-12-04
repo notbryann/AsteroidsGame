@@ -2,8 +2,8 @@ class Star //note that this class does NOT extend Floater
 {
 	int x, y;
 	public Star(){
-		x = (int)(Math.random()*800)+1;
-		y = (int)(Math.random()*800)+1;
+		x = (int)(Math.random()*801)+1;
+		y = (int)(Math.random()*801)+1;
   	}
   	public void show(){
   		noStroke();

@@ -1,17 +1,17 @@
 Spaceship bob;
 Star[] a;
-Asteroid[] s;
+ArrayList <Asteroid> s;
 public void setup() 
 {
   size(800,800);
   bob = new Spaceship();
-  a = new Star[500];
-  s = new Asteroid[30];
+  a = new Star[600];
+  s = new ArrayList <Asteroid> ();
   for(int i = 0; i < a.length; i++){
   	a[i] = new Star();
   }
-  for(int j = 0; j < s.length; j++){
-  	s[j] = new Asteroid();
+  for(int j = 0; j < 30; j++){
+  	s.add(new Asteroid());
   }
 }
 public void draw() 
@@ -20,12 +20,16 @@ public void draw()
   	for(int i = 0; i < a.length; i++){
 		a[i].show();
 }
-	for(int j = 0; j < s.length; j++){
-		s[j].show();
-		s[j].move();
+	for(int j = 0; j < s.size(); j++){
+		s.get(j).show();
+		s.get(j).move();
+		if(dist((float)bob.getCenterX(),(float)bob.getCenterY(),(float)s.get(j).getCenterX(),(float)s.get(j).getCenterY() )<40){
+		s.remove(j);
+		}
 	}
 	bob.show();
 	bob.move();
+
 }
 public void keyPressed(){
 	if(key == 'a'){
