@@ -1,6 +1,7 @@
 Spaceship bob;
 Star[] a;
 ArrayList <Asteroid> s;
+ArrayList <Bullet> d;
 public void setup() 
 {
   size(800,800);
@@ -19,7 +20,26 @@ public void draw()
   	background(0);
   	for(int i = 0; i < a.length; i++){
 		a[i].show();
-}
+	}
+	for(int k = 0; k < d.size(); k++){
+		d.get(k).show();
+		d.get(k).move();
+		for(int l = 0; l < s.size(); l++){
+			if(dist((float)s.get(l).getCenterX(),(float)s.get(l).getCenterY(),(float)d.get(k).getCenterX(),(float)d.get(k).getCenterY()) < 40){
+				s.remove(s.get(l));
+				d.remove(s.get(k));
+				break;
+			}
+		}
+	}
+	for(int k = 0; k < d.size(); k++){
+		if(d.get(k).getCenterX() > 800 || d.get(k).getCenterX() < 0){
+			s.remove(s.get(k));
+		}
+		if(d.get(k).getCenterY() > 800 || d.get(k).getCenterY() < 0){
+			s.remove(s.get(k));
+		}
+	}
 	for(int j = 0; j < s.size(); j++){
 		s.get(j).show();
 		s.get(j).move();
@@ -50,6 +70,9 @@ public void keyPressed(){
 		bob.setCenterY((int)(Math.random()*600)+1);
 		bob.setDirectionX((int)0);
 		bob.setDirectionY((int)0);
+	}
+	if(key == 'e'){
+		d.add(new Bullet(bob));
 	}
 }
 
