@@ -8,6 +8,7 @@ public void setup()
   bob = new Spaceship();
   a = new Star[600];
   s = new ArrayList <Asteroid> ();
+  d = new ArrayList <Bullet> ();
   for(int i = 0; i < a.length; i++){
   	a[i] = new Star();
   }
@@ -26,18 +27,17 @@ public void draw()
 		d.get(k).move();
 		for(int l = 0; l < s.size(); l++){
 			if(dist((float)s.get(l).getCenterX(),(float)s.get(l).getCenterY(),(float)d.get(k).getCenterX(),(float)d.get(k).getCenterY()) < 40){
-				s.remove(s.get(l));
-				d.remove(s.get(k));
+				s.remove(l);
+				d.remove(k);
 				break;
 			}
 		}
 	}
 	for(int k = 0; k < d.size(); k++){
 		if(d.get(k).getCenterX() > 800 || d.get(k).getCenterX() < 0){
-			s.remove(s.get(k));
-		}
-		if(d.get(k).getCenterY() > 800 || d.get(k).getCenterY() < 0){
-			s.remove(s.get(k));
+			d.remove(d.get(k));
+		}else if(d.get(k).getCenterY() > 800 || d.get(k).getCenterY() < 0){
+			d.remove(d.get(k));
 		}
 	}
 	for(int j = 0; j < s.size(); j++){
